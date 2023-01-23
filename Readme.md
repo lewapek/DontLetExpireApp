@@ -11,7 +11,7 @@ Simple app demonstrating the following stuff in action:
 - Circe (Json)
 - Doobie (with Postgres)
 
-With the app you can monitor products you bought, so if any of the product is about to expire you can view in on the top of the list - therefore you are more likely to not let it expire ;)
+With the app you can monitor products you bought, so if any of the product is about to expire you can view it on the top of the list - therefore you are more likely to not let it expire ;)
 
 ## Endpoints
 
