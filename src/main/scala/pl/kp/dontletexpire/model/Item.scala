@@ -12,12 +12,7 @@ case class Item(
     description: Option[String],
     quantity: Int,
     deadline: TimelinePoint
-):
-  def incrementQuantity(n: Int): Item =
-    val updatedQuantity = quantity + n
-    copy(quantity = if updatedQuantity < 0 then 0 else updatedQuantity)
-  end incrementQuantity
-end Item
+)
 
 case class ItemInput(
     storageId: StorageId,
