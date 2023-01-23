@@ -7,6 +7,7 @@ Simple app demonstrating the following stuff in action:
 - ZIO2
 - Cats
 - Caliban (Graphql)
+- ZQuery
 - Http4s
 - Circe (Json)
 - Doobie (with Postgres)
