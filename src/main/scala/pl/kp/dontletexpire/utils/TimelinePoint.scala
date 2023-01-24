@@ -16,7 +16,7 @@ import zio.UIO
 import java.time.*
 import java.time.format.DateTimeFormatter
 import scala.annotation.targetName
-import scala.concurrent.duration.FiniteDuration
+import scala.concurrent.duration.*
 import scala.util.Try
 
 // accuracy used up to millis - may lose nanos
@@ -31,7 +31,7 @@ case class TimelinePoint private (instant: Instant):
   def >=(that: TimelinePoint): Boolean = !(<(that))
 
   @targetName("minus")
-  def -(that: TimelinePoint): TimelinePoint = TimelinePoint.fromEpochMillis(epochMillis - that.epochMillis)
+  def -(that: TimelinePoint): FiniteDuration = (epochMillis - that.epochMillis).millis
 
   def plusDuration(duration: FiniteDuration): TimelinePoint  = TimelinePoint(instant.plusNanos(duration.toNanos))
   def minusDuration(duration: FiniteDuration): TimelinePoint = TimelinePoint(instant.minusNanos(duration.toNanos))

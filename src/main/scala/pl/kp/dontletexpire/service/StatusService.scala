@@ -15,7 +15,7 @@ class StatusService(nearlyExpiredDuration: FiniteDuration):
       if time > item.deadline then ItemStatusType.Expired
       else if time.plusDuration(nearlyExpiredDuration) > item.deadline then ItemStatusType.NearlyExpired
       else ItemStatusType.Ok
-    ItemStatus(statusType, (item.deadline - time).epochMillis)
+    ItemStatus(statusType, (item.deadline - time).toMillis)
   end itemStatus
 end StatusService
 
