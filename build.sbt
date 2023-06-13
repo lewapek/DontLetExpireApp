@@ -1,4 +1,4 @@
-ThisBuild / version := IO.read(file("version"))
+ThisBuild / version := IO.read(file("version")).linesIterator.next()
 
 ThisBuild / scalaVersion := "3.2.2"
 
@@ -21,7 +21,7 @@ lazy val root = (project in file("."))
       "-Xmax-inlines:64"
     ),
     Defaults.itSettings,
-    assembly / assemblyJarName := "app.jar",
+    assembly / assemblyDefaultJarName := "app.jar",
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", "versions", "9", "module-info.class") => MergeStrategy.discard
       case string                                                     => MergeStrategy.defaultMergeStrategy(string)
