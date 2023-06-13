@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  dontletexpireapp:
+    image: dontletexpireapp:0.1.1
+    environment:
+      HTTP_PORT: "8080"
+      DB_USER: "pawel"
+      DB_PASSWORD: "abc"
+      DB_HOST: "postgres"
+      DB_PORT: 5432
+    ports:
+      - "9010:8080"
+    restart: always
+    depends_on:
+    - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 500M
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: "pawel"
+      POSTGRES_PASSWORD: "abc"
+    restart: always
+    volumes:
+    - postgres-volume:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 500M
+volumes:
+  postgres-volume:
+
