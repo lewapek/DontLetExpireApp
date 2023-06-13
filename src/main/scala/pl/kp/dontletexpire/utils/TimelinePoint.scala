@@ -20,7 +20,7 @@ import scala.concurrent.duration.*
 import scala.util.Try
 
 // accuracy used up to millis - may lose nanos
-case class TimelinePoint private (instant: Instant):
+class TimelinePoint private (private val instant: Instant):
   @targetName("isBefore")
   def <(that: TimelinePoint): Boolean = instant.isBefore(that.instant)
   @targetName("isAfter")

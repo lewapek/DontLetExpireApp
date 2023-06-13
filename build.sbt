@@ -21,8 +21,9 @@ lazy val root = (project in file("."))
       "-Xmax-inlines:64"
     ),
     Defaults.itSettings,
+    assembly / assemblyJarName := "app.jar",
     assembly / assemblyMergeStrategy := {
-      case PathList("META-INF", _*) => MergeStrategy.discard
-      case _                        => MergeStrategy.first
+      case PathList("META-INF", "versions", "9", "module-info.class") => MergeStrategy.discard
+      case string                                                     => MergeStrategy.defaultMergeStrategy(string)
     }
   )
