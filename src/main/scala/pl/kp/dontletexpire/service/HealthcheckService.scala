@@ -24,12 +24,10 @@ class HealthcheckService(
           .transact(transactor)
           .timeoutTo(HealthcheckStatus.Timeout)(identity)(
             healthckeckConfig.postgresTimeoutSeconds seconds
-          )
-          .map {
+          ).mapBoth(AppError.db, {
             case Some(1) => HealthcheckStatus.Ok
-            case _       => HealthcheckStatus.NotOk
-          }
-          .mapError(AppError.db)
+            case _ => HealthcheckStatus.NotOk
+          })
     yield HealthcheckStatusSummary(postgres)
 
 object HealthcheckService:
